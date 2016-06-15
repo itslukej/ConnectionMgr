@@ -1,1 +1,1 @@
-from .ConnectionMgr import *
+from .connectionmgr import *
