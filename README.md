@@ -1,11 +1,12 @@
 # ConnectionMgr
 Python class for handling multiple sockets.
 
-```
+```python
 >>> from connectionmgr import ConnectionManager
+>>> import zirc, ssl
 >>> mgr = ConnectionManager()
->>> mgr.add("freenode")
->>> mgr.add("stuxnet", ssl=True)
+>>> mgr.add("freenode", zirc.Socket())
+>>> mgr.add("stuxnet", zirc.Socket(wrapper=ssl.wrap_socket))
 >>> mgr.connect("freenode", "irc.freenode.net", 6667)
 >>> mgr.connect("stuxnet", "irc.stuxnet.xyz", 6697)
 >>> mgr.recv_all()
@@ -15,14 +16,14 @@ Python class for handling multiple sockets.
             u':gemini.stuxnet.xyz NOTICE * :*** Looking up your hostname...',
             u':gemini.stuxnet.xyz NOTICE * :*** Checking Ident'
         ], 
-        'socket': <connectionmgr.socket_handler.Socket object at - >
+        'socket': <- object at - >
     },
     'freenode': {
         'received': [
             u':gemini.stuxnet.xyz NOTICE * :*** Looking up your hostname...',
             u':gemini.stuxnet.xyz NOTICE * :*** Checking Ident'
         ], 
-        'socket': <connectionmgr.socket_handler.Socket object at - >
+        'socket': <- object at - >
     }
 }
 ```
